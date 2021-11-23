@@ -1,0 +1,10 @@
+
+.img-style{
+    height: 24rem;
+    object-fit: contain;
+}
+
+.car-size{
+    height: 24rem;
+    background: black;
+}
