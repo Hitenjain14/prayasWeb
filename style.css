@@ -8,3 +8,20 @@
     height: 24rem;
     background: black;
 }
+.press-img{
+    width: 63%;
+    margin-left: 25%;
+}
+
+.scroll-bg{
+    width: 180%;
+}
+.scroll-div{
+    width:60%;
+    height: 500px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.scroll-object{
+    padding: 8px;
+}
