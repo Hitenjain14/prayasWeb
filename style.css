@@ -1,10 +1,35 @@
-
-.img-style{
-    height: 24rem;
-    object-fit: contain;
+.img-style {
+  height: 24rem;
+  object-fit: contain;
 }
 
-.car-size{
-    height: 24rem;
-    background: black;
+.car-size {
+  height: 24rem;
+  background: black;
+}
+#news {
+  overflow-y: scroll;
+  max-height: 400px;
+  width: 30vw;
+}
+#president {
+  width: 350px;
+  border-radius: 50%;
+}
+.myElement:hover {
+  color: white;
+  background: #0d47a1;
+}
+#news::-webkit-scrollbar {
+  width: 8px;
+  background-color: #f5f5f5;
+}
+#news::-webkit-scrollbar-thumb {
+  background-color: black;
+  outline: 1px solid slategrey;
+}
+.visitLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
