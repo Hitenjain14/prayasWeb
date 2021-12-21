@@ -33,3 +33,71 @@
   align-items: center;
   justify-content: center;
 }
+.img-container {
+  width: 100vw;
+  height: 50vh;
+}
+.press-img {
+  width: 63%;
+  margin-left: 25%;
+}
+
+.scroll-bg {
+  width: 180%;
+}
+.scroll-div {
+  width: 60%;
+  height: 500px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.scroll-object {
+  padding: 8px;
+}
+
+div::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+div::-webkit-scrollbar-thumb {
+  background-color: rgba(52, 110, 235, 0.2);
+}
+div::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(52, 110, 235, 0.8);
+}
+/**:before,*/
+/**:after{*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*    box-sizing: border-box;*/
+/*}*/
+/*a:after{*/
+/*    content: "";*/
+/*    position: absolute;*/
+/*    background-color: #ff3c78;*/
+/*    height: 3px;*/
+/*    width: 0;*/
+/*    left: 0;*/
+/*    bottom: -10px;*/
+/*    transition: 0.3s;*/
+/*}*/
+/*a:hover{*/
+/*    color:white;*/
+/*}*/
+/*a:hover:after{*/
+/*    width: 100%;*/
+/*}*/
+
+/*.navbar-expand-lg .navbar-nav .nav-link{*/
+/*    padding: 2rem 1.2rem;*/
+/*    font-size: 1.4rem;*/
+/*    position: relative;*/
+/*}*/
+.navbar-expand-lg .navbar-nav .nav-link:hover {
+  border-top: 4px solid #e74c3c;
+  transition: 0.3s;
+}
+.navbar-expand-lg .navbar-nav .nav-link.active {
+  border-top: 4px solid #e74c3c;
+  color: #e74c3c;
+}

@@ -15,13 +15,18 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="script.js"></script>
     <title>Prayas</title>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
-      <div class="container">
-        <div class="navbar-header">
-          <h3 class="navbar-brand py-2">Prayas</h3>
+</head>
+<body>
+<nav class="navbar sticky-top navbar-expand-lg bg-dark navbar-dark py-3">
+    <div class="container">
+        <div class="navbar-header ">
+        <h3 class="navbar-brand py-2">Prayas</h3>
         </div>
         <button
           class="navbar-toggler"
@@ -32,36 +37,32 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navmenu">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a href="#home" class="nav-link">Home</a>
-            </li>
-            <li class="nav-item">
-              <a href="#memb" class="nav-link">Membership</a>
-            </li>
-            <li class="nav-item">
-              <a href="#contact" class="nav-link">Contact Us</a>
-            </li>
-            <li class="nav-item">
-              <a href="#team" class="nav-link">Prayas Team</a>
-            </li>
-            <li class="nav-item">
-              <a href="#evnts" class="nav-link">Events Team</a>
-            </li>
-            <li class="nav-item">
-              <a href="#news" class="nav-link">News</a>
-            </li>
-          </ul>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="./member.html" class="nav-link">Membership</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a href="./prayas_team.html" class="nav-link">Prayas Team</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#evnts" class="nav-link">Events Team</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#news" class="nav-link">News</a>
+                </li>
+            </ul>
         </div>
       </div>
     </nav>
 
-    <section class="py-3">
-      <div
-        id="carouselExampleControls"
-        class="carousel slide"
-        data-bs-ride="carousel"
-      >
+<section class = "py-3" id="home">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner car-size">
           <div class="carousel-item active">
             <img
@@ -101,8 +102,6 @@
         </button>
       </div>
     </section>
-
-    <!-- News -->
 
     <section>
       <div class="container">
@@ -192,49 +191,97 @@
       </div>
     </section>
 
-    <!-- About us -->
-    <section class="bg-light mt-5 mb-5">
-      <div class="container">
-        <div class="row justify-content-evenly align-items-center">
-          <div class="col">
-            <p class="h2 pb-2 border-bottom border-dark">About Us</p>
-            <p>You'll like us more after reading it.</p>
-            <p class="pt-2 fw-normal lead text-align">
-              Founded in September 2021, PRAYAS: Punjab Regional Association of
-              Youth for Advancement of Sciences, is a community of enthusiastic
-              students, researchers and academicians with a passion for
-              promotion of science among people belonging to different age
-              groups, gender, geographical, cultural and socio-economic
-              backgrounds. Science education has always been an integral part of
-              almost all the education systems across the globe.
-            </p>
-            <p class="pt-2 fw-normal lead text-align">
-              PRAYAS provides a platform for the manifestation of scientific
-              aptitude while indulging in healthy competitions and other
-              scientific activities. The association brings together students,
-              teachers, college and university lecturers, professors, scientists
-              and researchers from industry for organizing science promotion
-              activities in the region.Any person who has faith and commitment
-              to the objectives of the association and is desirous of the
-              betterment of the association can become a member of the
-              association irrespective of caste, creed, sex, race, colour or
-              religion.
-            </p>
-          </div>
-          <div class="col">
-            <iframe
-              width="660"
-              height="415"
-              src="https://www.youtube.com/embed/JRkEW9ooiVI"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </div>
-        </div>
+<!-- About us -->
+<section class="bg-light mt-5 mb-5">
+  <div class="container">
+    <div class="row justify-content-evenly align-items-center">
+      <div class="col">
+        <p class="h2 pb-2 border-bottom border-dark">About Us</p>
+        <p>You'll like us more after reading it.</p>
+        <p class="pt-2 fw-normal lead text-align">
+          Founded in September 2021, PRAYAS: Punjab Regional Association of
+          Youth for Advancement of Sciences, is a community of enthusiastic
+          students, researchers and academicians with a passion for
+          promotion of science among people belonging to different age
+          groups, gender, geographical, cultural and socio-economic
+          backgrounds. Science education has always been an integral part of
+          almost all the education systems across the globe.
+        </p>
+        <p class="pt-2 fw-normal lead text-align">
+          PRAYAS provides a platform for the manifestation of scientific
+          aptitude while indulging in healthy competitions and other
+          scientific activities. The association brings together students,
+          teachers, college and university lecturers, professors, scientists
+          and researchers from industry for organizing science promotion
+          activities in the region.Any person who has faith and commitment
+          to the objectives of the association and is desirous of the
+          betterment of the association can become a member of the
+          association irrespective of caste, creed, sex, race, colour or
+          religion.
+        </p>
       </div>
-    </section>
+      <div class="col">
+        <iframe
+          width="660"
+          height="415"
+          src="https://www.youtube.com/embed/JRkEW9ooiVI"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- AIMS AND OBJECTIVES-->
+<section class = 'bg-light mt-5 mb-5'>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2>Aims And Objectives</h2>
+                <div class="scroll-bg">
+                    <div class="scroll-div">
+                        <div class="scroll-object">
+                            <ul>
+                                <li>Spread science among the masses and generate curiosity to explore, learn and exchange knowledge. </li>
+                                <li>Provide opportunities to students/General Public to familiarize them with the contribution of science in their life.</li>
+                                <li>Serve as a platform for the members to experiment, grow and prosper by collaborating with eminent scientific societies.</li>
+                                <li>Arrange affiliations and support from the state and national level science and technology councils for the furtherance of objectives and projects of the Association.  </li>
+                                <li>Collaborate through MoUs (Memorandum of Understanding) or partnerships with state level, national level and foreign individuals, educational institutions and organizations to widen our network and scientific reach. </li>
+                                <li>Diversify the scientific horizons of students/General Public through informative, astounding and prodigious webinars, workshops, educational tours etc</li>
+                                <li> Encourage scientific writing by inviting pieces to be published in journals/magazines of the Association.</li>
+                                <li>Promote research at undergraduate and school level by introducing summer and winter camps or internship programs</li>
+                                <li>To promote use of Information & Communication Technology (ICT) for scientific development of the community.  </li>
+                                <li>Enhance the practical scientific approach of students and help them gain hands-on  experience through training programs in premier institutes and companies.</li>
+                                <li>Develop team skills and the spirit of healthy competition through group tasks.  Provide challenging opportunities to the skilled.</li>
+                                <li>To foster Science communication in regional languages.</li>
+                                <li>To disseminate information and knowledge, to edit, publish, and print literature and documents, maintain libraries, and to organize seminars/ conferences/ meetings etc</li>
+                                <li>To promote participation of youth (unemployed as well as students) in income generation activities.</li>
+                                <li>To establish local chapters and clubs in various institutions of Punjab that would strengthen the developmental process. </li>
+                                <li>To organize lectures, seminars and workshops to help or strengthen the character building process.  To develop and nurture entrepreneurial talent and promote the ‘Make In India’ movement.</li>
+                                <li>To promote science promotion activities with special emphasis on women empowerment. </li>
+                                <li>To disseminate information and knowledge, to edit, publish, and print literature and documents related to science promotion and to organize seminars/ conferences/ meetings etc.</li>
+                                <li>To work for environmental awareness, sustainable development and participative management of local natural resources for village level development.  </li>
+                                <li>To arrange and organize various kinds of child welfare programmes/activities.</li>
+                                <li> To conduct research in science education and other disciplines on the different subjects relating to science education. </li>
+                                <li> To do all such acts, as may be useful and necessary for the attainment of the above objects</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col ml-5 py-3">
+                <div class="img-with-text-below">
+                <img src="./Images/President.jpeg" class="press-img" alt="...">
+                <p><div style="text-align: center; font-size: 20px;" ><b>President</b></div></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer class="bg-dark text-center text-white">
@@ -319,10 +366,15 @@
       </div>
     </footer>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+
+<!--<script type="text/javascript">-->
+<!--    $(document).on('click','ul li',function(){-->
+<!--        $(this).addClass('active').siblings().removeClass('active');-->
+<!--    })-->
+<!--</script>-->
+
+
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
 </html>

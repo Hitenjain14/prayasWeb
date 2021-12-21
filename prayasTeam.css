@@ -1,0 +1,59 @@
+.navbar-expand-lg .navbar-nav .nav-link:hover{
+    border-top: 4px solid #e74c3c;
+    transition:0.3s;
+}
+.navbar-expand-lg .navbar-nav .nav-link.active{
+    border-top: 4px solid #e74c3c;
+    color: #e74c3c;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family:sans-serif;
+}
+section{
+    position: relative;
+    width:100%;
+    height:35vh;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+section:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75%;
+    background: linear-gradient(45deg,#ff0081,#6827b0);
+    border-radius: 0 0 50% 50%/0 0 100% 100%;
+    transform: scaleX(1.5);
+}
+section .content{
+    position: relative;
+    z-index: 1;
+    margin: 30px auto;
+    max-width: 900px;
+    text-align: center;
+}
+
+section .content h2{
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    font-size: 3em;
+
+}
+section .content p{
+
+    color: #fff;
+    font-size: 1.2em;
+
+}
+.card-img-top {
+    width: 100%;
+    height: 45vh;
+    object-fit: cover;
+}
