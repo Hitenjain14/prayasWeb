@@ -7,7 +7,6 @@ const upcomingEvents = new mongoose.Schema({
   },
   link: {
     type: String,
-    required: [true, 'A link is required'],
   },
 });
 
