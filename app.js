@@ -17,6 +17,13 @@ app.use(express.json());
 
 //Data sanitization against NoSQL query injection
 app.use(mongoSanitize());
+app.use(xss());
+
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: 'Too many requests form this IP, please try again in an hour!',
+});
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Cant find ${req.originalUrl} on this server`, 404));
