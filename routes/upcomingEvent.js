@@ -1,5 +1,6 @@
 const express = require('express');
 const upcomEvent = require('./../controllers/upcomingController');
+const authController = require('./../controllers/authController');
 const router = express.Router();
 
 router.route('/').get(upcomEvent.getAllEvents);
