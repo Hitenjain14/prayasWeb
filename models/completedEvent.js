@@ -21,6 +21,10 @@ const completedEvent = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+  TitleImagePath: {
+    type: String,
+    required: [true, 'A title image path is required'],
+  },
 });
 
 const Completed = mongoose.model('Completed', completedEvent);

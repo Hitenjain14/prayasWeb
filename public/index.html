@@ -64,23 +64,7 @@
 <section class = "py-3" id="home">
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner car-size">
-          <div class="carousel-item active">
-            <img
-            src="https://images.unsplash.com/photo-1517960413843-0aee8e2b3285?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80"
-            class="img-style w-100" alt=>
-          </div>
-          <div class="carousel-item">
-            <img
-              src="https://cdn.pocket-lint.com/r/s/1200x/assets/images/151442-cameras-feature-stunning-photos-from-the-national-sony-world-photography-awards-2020-image1-evuxphd3mr.jpg"
-              class="img-style w-100"
-            />
-          </div>
-          <div class="carousel-item">
-            <img
-              src="https://media.wired.com/photos/5fb70f2ce7b75db783b7012c/master/pass/Gear-Photos-597589287.jpg"
-              class="img-style w-100"
-            />
-          </div>
+          {%SLIDER_IMAGES%}
         </div>
         <button
           class="carousel-control-prev"
@@ -128,63 +112,7 @@
               >
             </p>
             <div class="list-group border border-dark" id="news">
-              <a
-                href="https://sites.google.com/view/prayasfellowship/home?authuser=3"
-                target="_blank"
-                class="list-group-item list-group-item-action myElement"
-              >
-                <p class="myElement">
-                  An Internship Program of the students, by the students, for
-                  the students by PRAYAS starting on 15 Nov 2021
-                </p>
-              </a>
-              <a
-                href="#"
-                class="list-group-item list-group-item-action myElement"
-                ><p class="myElement">
-                  VISIT TO DISTRICT LEVEL SCIENCE EXHIBITION at AMRITSAR on 26
-                  Nov 2021
-                </p></a
-              >
-              <a
-                href="https://www.instagram.com/p/CVFcVzNpt9W/"
-                target="_blank"
-                class="list-group-item list-group-item-action myElement"
-                ><p class="myElement">
-                  A State Level PowerPoint Competition by PRAYAS starting on 24
-                  Oct 2021
-                </p></a
-              >
-              <a
-                href="#"
-                class="list-group-item list-group-item-action myElement"
-                ><p class="myElement">DUMMY EVENT FOR NEWS</p></a
-              >
-              <a
-                href="#"
-                class="list-group-item list-group-item-action myElement"
-                ><p class="myElement">DUMMY EVENT FOR NEWS</p></a
-              >
-              <a
-                href="#"
-                class="list-group-item list-group-item-action myElement"
-                ><p class="myElement">DUMMY EVENT FOR NEWS</p></a
-              >
-              <a
-                href="#"
-                class="list-group-item list-group-item-action myElement"
-                ><p class="myElement">DUMMY EVENT FOR NEWS</p></a
-              >
-              <a
-                href="#"
-                class="list-group-item list-group-item-action myElement"
-                ><p class="myElement">DUMMY EVENT FOR NEWS</p></a
-              >
-              <a
-                href="#"
-                class="list-group-item list-group-item-action myElement"
-                ><p class="myElement">DUMMY EVENT FOR NEWS</p></a
-              >
+              {%UPCOMING_EVENTS%}
             </div>
           </div>
         </div>

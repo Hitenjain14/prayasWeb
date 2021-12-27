@@ -1,12 +1,16 @@
 const express = require('express');
-const upcomEvent = require('./../controllers/upcomingController');
+const upcomingEvent = require('./../controllers/upcomingController');
 const authController = require('./../controllers/authController');
 const router = express.Router();
 
-router.route('/').get(upcomEvent.getAllEvents);
+router
+  .route('/')
+  .get(upcomingEvent.getAllEvents)
+  .post(authController.protect, upcomingEvent.addEvent);
+
 router
   .route('/completed-event:id')
-  .post(authController.protect, upcomEvent.newEvent)
-  .delete(authController.protect, upcomEvent.deleteEvent);
+
+  .delete(authController.protect, upcomingEvent.deleteEvent);
 
 module.exports = router;
