@@ -15,6 +15,7 @@ const completedEvent = new mongoose.Schema({
   TitleImage: {
     type: String,
     required: [true, 'A title image is required'],
+    unique: true,
   },
   galleryImages: [String],
   createdAt: {
@@ -23,7 +24,6 @@ const completedEvent = new mongoose.Schema({
   },
   TitleImagePath: {
     type: String,
-    required: [true, 'A title image path is required'],
   },
 });
 

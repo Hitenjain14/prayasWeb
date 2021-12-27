@@ -1,6 +1,6 @@
 const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
-const User = require('./../models/user');
+const User = require('../models/userModel');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 
@@ -34,13 +34,13 @@ const createSendToken = (user, statusCode, res) => {
 };
 
 exports.login = catchAsync(async (req, res, next) => {
-  const { email, password } = req.body;
+  const { name, password } = req.body;
   //1) Check if email and password exist in req.body
-  if (!email || !password) {
-    return next(new AppError('Please enter email and password', 400));
+  if (!name || !password) {
+    return next(new AppError('Please enter name and password', 400));
   }
   //2) Check if user exists and password matches the email
-  const user = await User.findOne({ email }).select('+password');
+  const user = await User.findOne({ name }).select('+password');
   if (!user || !(password === user.password)) {
     return next(new AppError('Incorrect email or password', 401));
   }

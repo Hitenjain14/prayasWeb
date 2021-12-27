@@ -12,14 +12,17 @@ const replacePlaceHolder = (temp, event) => {
   return output;
 };
 
-const homePage = fs.readFileSync('./../public/index.html');
-const newsPage = fs.readFileSync('./../public/templates/news.html');
+const homePage = fs.readFileSync('./public/index.html', 'utf-8');
+const newsPage = fs.readFileSync('./public/templates/news.html', 'utf-8');
 
 exports.getAllEvents = catchAsync(async (req, res, next) => {
   const completed = await upcomingEvents.find();
 
   const out = completed.map((el) => replacePlaceHolder(newsPage, el));
-  const out_ = homePage.replace('{%UPCOMING_EVENTS%}', out);
+  const out_ = homePage
+    .replace('{%UPCOMING_EVENTS%}', out)
+    .split(',')
+    .join(' ');
 
   res.writeHead(200, { 'Content-type': 'text/html' });
   res.end(out_);

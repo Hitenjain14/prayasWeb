@@ -1,6 +1,5 @@
 const fs = require('fs');
 const completedEvent = require('./../models/completedEvent');
-const multer = require('multer');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 
@@ -9,9 +8,8 @@ const replacePlaceHolder = (images, el) => {
   return out;
 };
 
-const upload = multer({ dest: 'uploads/' });
-const homePage = fs.readFileSync('./../public/index.html');
-const images = fs.readFileSync('./../public/templates/sliderImages.html');
+const homePage = fs.readFileSync('./public/index.html', 'utf-8');
+const images = fs.readFileSync('./public/templates/sliderImages.html', 'utf-8');
 
 exports.getAllEvents = catchAsync(async (req, res, next) => {
   const completed = await completedEvent.find();
