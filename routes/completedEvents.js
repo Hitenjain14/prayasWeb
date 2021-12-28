@@ -10,17 +10,19 @@ const storage = multer.diskStorage({
     cb(null, 'public/uploads/');
   },
   filename: function (req, file, cb) {
-    cb(null, new Date().toISOString() + file.originalname);
+    cb(null, file.originalname);
   },
 });
 
 const upload = multer({ storage: storage });
 
-router.route('/').get(completedEvent.getAllEvents);
-
 router
   .route('/addCompletedEvent')
-  .post(authController.protect, completedEvent.newEvent);
+  .post(
+    authController.protect,
+    upload.single('photo'),
+    completedEvent.newEvent
+  );
 
 router
   .route('/completed-event:id')
