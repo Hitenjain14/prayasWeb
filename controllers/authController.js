@@ -34,6 +34,7 @@ const createSendToken = (user, statusCode, res) => {
 };
 
 exports.login = catchAsync(async (req, res, next) => {
+  console.log(req.body);
   const { name, password } = req.body;
   //1) Check if email and password exist in req.body
   if (!name || !password) {
