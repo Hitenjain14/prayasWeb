@@ -14,13 +14,7 @@ app.use(
     contentSecurityPolicy: false,
   })
 );
-<<<<<<< HEAD
 app.use(express.urlencoded({ extended: false }));
-=======
-
-app.use(express.urlencoded({ extended: false }));
-
->>>>>>> fce35b73aadaeecc8b277f518151d8554384a58c
 //Body parser to read data from body(req.body) can restrict amount of data by app.use(express.json({limit : '10kb'}));
 app.use(express.json());
 
