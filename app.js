@@ -14,10 +14,13 @@ app.use(
     contentSecurityPolicy: false,
   })
 );
+
+app.use(express.urlencoded({ extended: false }));
+
 //Body parser to read data from body(req.body) can restrict amount of data by app.use(express.json({limit : '10kb'}));
 app.use(express.json());
 
-app.use(express.static(`${__dirname}/public`));
+app.use(express.static(__dirname + '/public'));
 
 //Data sanitization against NoSQL query injection
 app.use(mongoSanitize());
