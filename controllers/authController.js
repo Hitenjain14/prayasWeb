@@ -16,6 +16,8 @@ const signToken = (id) => {
   });
 };
 
+const page = fs.readFileSync('./public/member.html', 'utf8');
+
 const createSendToken = (user, statusCode, res) => {
   const token = signToken(user._id);
 
@@ -25,13 +27,8 @@ const createSendToken = (user, statusCode, res) => {
 
   res.cookie('jwt', token, cookieOptions);
   user.password = undefined;
-  res.status(statusCode).json({
-    status: 'success',
-    token,
-    data: {
-      user,
-    },
-  });
+  res.writeHead(200, { 'Content-type': 'text/html' });
+  res.end(page);
 };
 
 exports.login = catchAsync(async (req, res, next) => {
