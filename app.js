@@ -4,13 +4,17 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
+const path = require('path');
 
 const app = express();
 
-app.use(express.json());
-
-//Set security http headers
-app.use(helmet());
+// Set security http headers
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
+app.use(express.urlencoded({ extended: false }));
 //Body parser to read data from body(req.body) can restrict amount of data by app.use(express.json({limit : '10kb'}));
 app.use(express.json());
 
@@ -23,9 +27,11 @@ app.use(xss());
 const completedEvent = require('./routes/completedEvents');
 const upcomingEvent = require('./routes/upcomingEvent');
 const userRouter = require('./routes/userRouter');
+const allRouter = require('./routes/allRouter');
 
-app.use('/homePage', upcomingEvent);
-app.use('/homePage', completedEvent);
+app.use('/completed', completedEvent);
+app.use('/adminUpcoming', upcomingEvent);
+app.use('/', allRouter);
 app.use('/adminLogin', userRouter);
 
 app.all('*', (req, res, next) => {
