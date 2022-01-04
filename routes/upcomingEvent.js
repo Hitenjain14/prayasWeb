@@ -11,8 +11,8 @@ router
   .post(authController.protect, upcomingEvent.addEvent);
 
 router
-  .route('/upcoming-event:id')
+  .route('/upcoming-event/:id')
 
-  .delete(authController.protect, upcomingEvent.deleteEvent);
+  .get(authController.protect, upcomingEvent.deleteEvent);
 
 module.exports = router;

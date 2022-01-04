@@ -25,7 +25,7 @@ router
   );
 
 router
-  .route('/completed-event:id')
+  .route('/completed-event/:id')
   .get(completedEvent.getEvent)
   .delete(authController.protect, completedEvent.deleteCompleted);
 

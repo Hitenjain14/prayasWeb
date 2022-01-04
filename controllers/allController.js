@@ -6,6 +6,7 @@ const upcomingEvents = require('./../models/upcomingEvents');
 
 const replacePlaceHolder1 = (images, el) => {
   let out = images.replace('{%LINK%}', el.TitleImage);
+  out = out.replace('{%ID%}', el._id);
   return out;
 };
 

@@ -4,6 +4,8 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
+const completedEvent = require('./../models/completedEvent');
+const upcomingEvents = require('./../models/upcomingEvents');
 
 const cookieOptions = {
   expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000),
@@ -16,23 +18,48 @@ const signToken = (id) => {
   });
 };
 
-const page = fs.readFileSync('./public/member.html', 'utf8');
+const page = fs.readFileSync('./public/admin.html', 'utf8');
+const deleteNews = fs.readFileSync(
+  './public/templates/deleteNews.html',
+  'utf8'
+);
+const deleteCompleted = fs.readFileSync(
+  './public/templates/deleteCompleted.html',
+  'utf8'
+);
 
-const createSendToken = (user, statusCode, res) => {
-  const token = signToken(user._id);
+const replacePlaceHolder = (placeholder, el) => {
+  let out = placeholder.replace('{%TITLE%}', el.title);
+  out = out.replace('{%ID%}', el._id);
+  return out;
+};
 
-  if (process.env.NODE_ENV === 'production') {
-    cookieOptions.secure = true;
+const createSendToken = async (user, statusCode, res) => {
+  try {
+    const token = signToken(user._id);
+
+    if (process.env.NODE_ENV === 'production') {
+      cookieOptions.secure = true;
+    }
+
+    res.cookie('jwt', token, cookieOptions);
+    user.password = undefined;
+
+    const completed = await completedEvent.find();
+    const upcoming = await upcomingEvents.find();
+    const out1 = completed.map((el) => replacePlaceHolder(deleteCompleted, el));
+    const out2 = upcoming.map((el) => replacePlaceHolder(deleteNews, el));
+    let out_ = page.replace('{%COMPLETED_EVENTS%}', out1).split(',').join(' ');
+    out_ = out_.replace('{%UPCOMING_EVENTS%}', out2).split(',').join(' ');
+
+    res.writeHead(200, { 'Content-type': 'text/html' });
+    res.end(out_);
+  } catch (err) {
+    console.log(err);
   }
-
-  res.cookie('jwt', token, cookieOptions);
-  user.password = undefined;
-  res.writeHead(200, { 'Content-type': 'text/html' });
-  res.end(page);
 };
 
 exports.login = catchAsync(async (req, res, next) => {
-  console.log(req.body);
   const { name, password } = req.body;
   //1) Check if email and password exist in req.body
   if (!name || !password) {
@@ -60,6 +87,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   if (req.headers.authorization) {
     qwe = req.headers.authorization.startsWith('Bearer');
   }
+  console.log(qwe);
   if (qwe) {
     token = req.headers.authorization.split(' ')[1];
   }

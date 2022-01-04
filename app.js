@@ -5,9 +5,10 @@ const xss = require('xss-clean');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const path = require('path');
-
+const morgan = require('morgan');
 const app = express();
 
+app.use(morgan('dev'));
 // Set security http headers
 app.use(
   helmet({
@@ -30,7 +31,7 @@ const userRouter = require('./routes/userRouter');
 const allRouter = require('./routes/allRouter');
 
 app.use('/completed', completedEvent);
-app.use('/adminUpcoming', upcomingEvent);
+app.use('/upcoming', upcomingEvent);
 app.use('/', allRouter);
 app.use('/adminLogin', userRouter);
 
