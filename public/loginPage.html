@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Animated Login Form</title>
+    <link rel="stylesheet" href='loginStyle.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+<div class="container">
+    <header>Login</header>
+
+    <form action = "/adminLogin/login" method = "POST">
+        <div class="input-field">
+            <input type="text" id="name" name = "name" required>
+            <label for="name">Name</label>
+        </div>
+        <div class="input-field">
+            <input class="password" type="password" id="password" name = "password" required>
+            <span class="show">SHOW</span>
+            <label for ="password">Password</label>
+        </div>
+        <div class="button">
+            <div class="inner"></div>
+            <button>LOGIN</button>
+        </div>
+    </form>
+    </div>
+
+<script>
+    var input = document.querySelector('.password');
+    var show = document.querySelector('.show');
+    show.addEventListener('click', active);
+    function active(){
+        if(input.type === "password"){
+            input.type = "text";
+            show.style.color = "#1DA1F2";
+            show.textContent = "HIDE";
+        }else{
+            input.type = "password";
+            show.textContent = "SHOW";
+            show.style.color = "#111";
+        }
+    }
+</script>
+</body>
+</html>
