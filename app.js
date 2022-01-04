@@ -6,6 +6,7 @@ const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const path = require('path');
 const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
 const app = express();
 
 app.use(morgan('dev'));
@@ -15,7 +16,8 @@ app.use(
     contentSecurityPolicy: false,
   })
 );
-app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
 //Body parser to read data from body(req.body) can restrict amount of data by app.use(express.json({limit : '10kb'}));
 app.use(express.json());
 

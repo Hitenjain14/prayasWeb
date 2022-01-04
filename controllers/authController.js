@@ -34,29 +34,25 @@ const replacePlaceHolder = (placeholder, el) => {
   return out;
 };
 
-const createSendToken = async (user, statusCode, res) => {
-  try {
-    const token = signToken(user._id);
+const createSendToken = (user, statusCode, res) => {
+  const token = signToken(user._id);
 
-    if (process.env.NODE_ENV === 'production') {
-      cookieOptions.secure = true;
-    }
-
-    res.cookie('jwt', token, cookieOptions);
-    user.password = undefined;
-
-    const completed = await completedEvent.find();
-    const upcoming = await upcomingEvents.find();
-    const out1 = completed.map((el) => replacePlaceHolder(deleteCompleted, el));
-    const out2 = upcoming.map((el) => replacePlaceHolder(deleteNews, el));
-    let out_ = page.replace('{%COMPLETED_EVENTS%}', out1).split(',').join(' ');
-    out_ = out_.replace('{%UPCOMING_EVENTS%}', out2).split(',').join(' ');
-
-    res.writeHead(200, { 'Content-type': 'text/html' });
-    res.end(out_);
-  } catch (err) {
-    console.log(err);
+  if (process.env.NODE_ENV === 'production') {
+    cookieOptions.secure = true;
   }
+
+  res.cookie('jwt', token, cookieOptions);
+
+  // const completed = await completedEvent.find();
+  // const upcoming = await upcomingEvents.find();
+  // const out1 = completed.map((el) => replacePlaceHolder(deleteCompleted, el));
+  // const out2 = upcoming.map((el) => replacePlaceHolder(deleteNews, el));
+  // let out_ = page.replace('{%COMPLETED_EVENTS%}', out1).split(',').join(' ');
+  // out_ = out_.replace('{%UPCOMING_EVENTS%}', out2).split(',').join(' ');
+  //
+  // res.writeHead(200, { 'Content-type': 'text/html' });
+  // res.end(out_);
+  res.redirect('/adminPage');
 };
 
 exports.login = catchAsync(async (req, res, next) => {
@@ -83,14 +79,15 @@ exports.login = catchAsync(async (req, res, next) => {
 exports.protect = catchAsync(async (req, res, next) => {
   //1) Getting token and check if its there
   let token;
-  let qwe = false;
-  if (req.headers.authorization) {
-    qwe = req.headers.authorization.startsWith('Bearer');
-  }
-  console.log(qwe);
-  if (qwe) {
-    token = req.headers.authorization.split(' ')[1];
-  }
+  // let qwe = false;
+  // if (req.cookies.jwt) {
+  //   qwe = req.headers.authorization.startsWith('Bearer');
+  // }
+  // console.log(qwe);
+  // if (qwe) {
+  //   token = req.headers.authorization.split(' ')[1];
+  // }
+  token = req.cookies.jwt;
   if (!token) {
     return next(
       new AppError('You are not logged in! Please log in again', 401)
