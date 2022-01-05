@@ -37,12 +37,13 @@ exports.getEvent = catchAsync(async (req, res, next) => {
 exports.deleteCompleted = catchAsync(async (req, res, next) => {
   const id = req.params.id;
 
-  const completed = await completedEvent.findByIdAndDelete(id);
+  await completedEvent.findByIdAndDelete(id);
 
-  res.status(204).json({
-    status: 'success',
-    data: null,
-  });
+  // res.status(204).json({
+  //   status: 'success',
+  //   data: null,
+  // });
+  res.redirect('/adminPage');
 });
 
 exports.newEvent = catchAsync(async (req, res, next) => {
@@ -58,10 +59,11 @@ exports.newEvent = catchAsync(async (req, res, next) => {
   req.body.TitleImage = req.file.filename;
   const completed = await completedEvent.create(req.body);
 
-  res.status(201).json({
-    status: 'success',
-    data: {
-      completed,
-    },
-  });
+  // res.status(201).json({
+  //   status: 'success',
+  //   data: {
+  //     completed,
+  //   },
+  // });
+  res.redirect('/adminPage');
 });

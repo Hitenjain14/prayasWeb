@@ -18,15 +18,12 @@ const upload = multer({ storage: storage });
 
 router
   .route('/addCompletedEvent')
-  .post(
-    authController.protect,
-    upload.single('photo'),
-    completedEvent.newEvent
-  );
+  .post(upload.single('titleImage'), completedEvent.newEvent);
+
+router.route('/completed-event/:id').get(completedEvent.getEvent);
 
 router
-  .route('/completed-event/:id')
-  .get(completedEvent.getEvent)
-  .delete(authController.protect, completedEvent.deleteCompleted);
+  .route('/completedEvent/:id')
+  .get(authController.protect, completedEvent.deleteCompleted);
 
 module.exports = router;
