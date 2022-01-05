@@ -15,10 +15,14 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
+const multiUpload = upload.fields([
+  { name: 'titleImage', maxCount: 1 },
+  { name: 'imageGallery', maxCount: 12 },
+]);
 
 router
   .route('/addCompletedEvent')
-  .post(upload.single('titleImage'), completedEvent.newEvent);
+  .post(authController.protect, multiUpload, completedEvent.newEvent);
 
 router
   .route('/completedEvent/:id')

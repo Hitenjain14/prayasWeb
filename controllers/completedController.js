@@ -60,15 +60,22 @@ exports.deleteCompleted = catchAsync(async (req, res, next) => {
 
 exports.newEvent = catchAsync(async (req, res, next) => {
   // console.log(req.file);
-  if (!req.file) {
+  if (!req.files) {
     return next(new AppError('Image is required'), 404);
   }
-  let pth = req.file.path;
+  let pth = req.files.titleImage[0].path;
   let v = './../';
   pth = v + pth;
   console.log(pth);
   req.body.TitleImagePath = pth;
-  req.body.TitleImage = req.file.filename;
+  req.body.TitleImage = req.files.titleImage[0].filename;
+
+  req.body.galleryImages = [];
+
+  req.files.imageGallery.forEach((el) => {
+    req.body.galleryImages.push(el.filename);
+  });
+
   const completed = await completedEvent.create(req.body);
 
   // res.status(201).json({
