@@ -8,6 +8,10 @@ const upcomingEvents = new mongoose.Schema({
   link: {
     type: String,
   },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
 });
 
 const Upcoming = mongoose.model('Upcoming', upcomingEvents);

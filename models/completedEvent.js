@@ -4,6 +4,7 @@ const completedEvent = new mongoose.Schema({
   title: {
     type: String,
     required: [true, 'A title is required'],
+    unique: true,
   },
   content: {
     type: String,

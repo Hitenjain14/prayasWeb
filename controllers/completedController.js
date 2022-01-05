@@ -3,10 +3,10 @@ const completedEvent = require('./../models/completedEvent');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 
-// const replacePlaceHolder = (images, el) => {
-//   let out = images.replace('{%LINK%}', el.TitleImage);
-//   return out;
-// };
+const replacePlaceHolder = (images, el) => {
+  let out = images.replace('{%LINK%}', el);
+  return out;
+};
 //
 // const homePage = fs.readFileSync('./public/homePage.html', 'utf-8');
 // const images = fs.readFileSync('./public/templates/sliderImages.html', 'utf-8');
@@ -21,17 +21,26 @@ const AppError = require('./../utils/appError');
 //   res.end(out_);
 // });
 const eventPage = fs.readFileSync('./public/event.html', 'utf-8');
+const galleryImage = fs.readFileSync(
+  './public/templates/gallery.html',
+  'utf-8'
+);
 exports.getEvent = catchAsync(async (req, res, next) => {
   const id = req.params.id;
 
   const completed = await completedEvent.findById(id);
-  let out = eventPage.replace(/{%TITLE%}/g, completed.titleImage);
+  let out = eventPage.replace(/{%TITLE%}/g, completed.title);
+  out = out.replace('{%TITLEIMAGE%}', completed.TitleImage);
   out = out.replace('{%SUMMARY%}', completed.content);
   if (completed.link) {
     out = out.replace('{%LINK%}', completed.link);
   } else {
     out = out.replace('{%LINK%}', '#');
   }
+  let x = completed.galleryImages.map((el) =>
+    replacePlaceHolder(galleryImage, el)
+  );
+  out = out.replace('{%GALLERY_IMAGE%}', x);
 
   res.writeHead(200, { 'Content-type': 'text/html' });
   res.end(out);

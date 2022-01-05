@@ -20,8 +20,6 @@ router
   .route('/addCompletedEvent')
   .post(upload.single('titleImage'), completedEvent.newEvent);
 
-router.route('/completed-event/:id').get(completedEvent.getEvent);
-
 router
   .route('/completedEvent/:id')
   .get(authController.protect, completedEvent.deleteCompleted);
