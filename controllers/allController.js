@@ -17,8 +17,12 @@ const replacePlaceHolder1 = (images, el) => {
 };
 
 const replacePlaceHolder2 = (temp, event) => {
-  let output = temp.replace(/{%LINK%}/g, event.link);
-  output = output.replace(/{%TITLE%}/g, event.title);
+  let output = temp.replace(/{%TITLE%}/g, event.title);
+  if (event.link) {
+    output = output.replace(/{%LINK%}/g, event.link);
+  } else {
+    output = output.replace(/{%LINK%}/g, '#');
+  }
 
   return output;
 };

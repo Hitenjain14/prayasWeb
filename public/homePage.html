@@ -294,7 +294,28 @@
       </div>
     </footer>
 
-
+<script>
+  jQuery(document).ready(function($) {
+    $('a[href="#"]').click(function(e) {
+        e.preventDefault();
+    });
+});
+</script>
+<script>
+  jQuery(document).ready(function($) {
+    $(document).ready(function(){
+        $('a[href="#"]').mouseenter(function(){
+            $(this).find("p").finish().animate({
+                opacity: "0.5"
+            });
+        }).mouseleave(function(){
+            $(this).find("p").finish().animate({
+                opacity: "1"
+            });
+        });
+    });
+});
+</script>
 <!--<script type="text/javascript">-->
 <!--    $(document).on('click','ul li',function(){-->
 <!--        $(this).addClass('active').siblings().removeClass('active');-->

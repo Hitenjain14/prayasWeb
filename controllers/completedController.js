@@ -20,18 +20,21 @@ const AppError = require('./../utils/appError');
 //   res.writeHead(200, { 'Content-type': 'text/html' });
 //   res.end(out_);
 // });
-
+const eventPage = fs.readFileSync('./public/event.html', 'utf-8');
 exports.getEvent = catchAsync(async (req, res, next) => {
   const id = req.params.id;
 
   const completed = await completedEvent.findById(id);
+  let out = eventPage.replace(/{%TITLE%}/g, completed.titleImage);
+  out = out.replace('{%SUMMARY%}', completed.content);
+  if (completed.link) {
+    out = out.replace('{%LINK%}', completed.link);
+  } else {
+    out = out.replace('{%LINK%}', '#');
+  }
 
-  res.status(200).json({
-    status: 'success',
-    data: {
-      completed,
-    },
-  });
+  res.writeHead(200, { 'Content-type': 'text/html' });
+  res.end(out);
 });
 
 exports.deleteCompleted = catchAsync(async (req, res, next) => {

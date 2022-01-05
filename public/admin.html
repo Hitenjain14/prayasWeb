@@ -21,9 +21,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
-    <link rel='stylesheet' href='admin.css'>
+    <link rel="stylesheet" href="admin.css" />
     <title>Admin Portal</title>
-
   </head>
 
   <body>
@@ -34,7 +33,11 @@
           style="background-color: white; height: 80vh; border-radius: 10%"
         >
           <h3 class="head">Add Completed Event</h3>
-          <form action="/completed/addCompletedEvent" method="POST" enctype="multipart/form-data">
+          <form
+            action="/completed/addCompletedEvent"
+            method="POST"
+            enctype="multipart/form-data"
+          >
             <div class="input-field">
               <input type="text" id="title" name="title" required />
               <label for="title">Title</label>
@@ -86,13 +89,27 @@
       </div>
       <div class="row justify-content-center">
         <div class="col m-5">
-          <div class="list-group border border-dark" id="table">
-            {%UPCOMING_EVENTS%}
+          <div>
+            <p class="lead text-light">
+              <span class="bg-dark p-2" style="border-radius: 15%"
+                ><b>Completed events list</b></span
+              >
+            </p>
+            <div class="list-group border border-dark" id="table">
+              {%COMPLETED_EVENTS%}
+            </div>
           </div>
         </div>
         <div class="col m-5">
-          <div class="list-group border border-dark" id="table">
-            {%COMPLETED_EVENTS%}
+          <div>
+            <p class="lead text-light">
+              <span class="bg-dark p-2" style="border-radius: 15%"
+                ><b>Upcoming events list</b></span
+              >
+            </p>
+            <div class="list-group border border-dark" id="table">
+              {%UPCOMING_EVENTS%}
+            </div>
           </div>
         </div>
       </div>
