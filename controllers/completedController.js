@@ -49,6 +49,31 @@ exports.getEvent = catchAsync(async (req, res, next) => {
 exports.deleteCompleted = catchAsync(async (req, res, next) => {
   const id = req.params.id;
 
+  const event = await completedEvent.findById(id);
+  const name = event.TitleImage;
+  console.log(name);
+  await fs.unlink(`./public/uploads/${name}`, (err) => {
+    if (err) {
+      console.log(err.message);
+    } else {
+      console.log('Deleted successfully');
+    }
+  });
+
+  if (event.galleryImages.length > 0) {
+    await Promise.all(
+      event.galleryImages.map(async (el) => {
+        await fs.unlink(`./public/uploads/${el}`, (err) => {
+          if (err) {
+            console.log(err.message);
+          } else {
+            // console.log('Deleted successfully');
+          }
+        });
+      })
+    );
+  }
+
   await completedEvent.findByIdAndDelete(id);
 
   // res.status(204).json({
@@ -70,11 +95,13 @@ exports.newEvent = catchAsync(async (req, res, next) => {
   req.body.TitleImagePath = pth;
   req.body.TitleImage = req.files.titleImage[0].filename;
 
-  req.body.galleryImages = [];
+  if (req.files.imageGallery) {
+    req.body.galleryImages = [];
 
-  req.files.imageGallery.forEach((el) => {
-    req.body.galleryImages.push(el.filename);
-  });
+    req.files.imageGallery.forEach((el) => {
+      req.body.galleryImages.push(el.filename);
+    });
+  }
 
   const completed = await completedEvent.create(req.body);
 
