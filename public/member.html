@@ -2,6 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link
+      rel="icon"
+      href="/prayas_images/PRAYAS-logo-removebg-preview.png"
+      type="image/icon type"
+    />
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -20,12 +26,27 @@
     />
     <script src="script.js"></script>
     <title>Member</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Bungee"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <nav class="navbar sticky-top navbar-expand-lg bg-dark navbar-dark py-3">
       <div class="container">
         <div class="navbar-header">
-          <h3 class="navbar-brand py-2">Prayas</h3>
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+              <img
+                src="prayas_images/PRAYAS-logo-removebg-preview.png"
+                alt=""
+                width="50"
+                height="40"
+                class="d-inline-block align-text-top"
+              />
+              <p class="d-inline-block logo">Prayas</p>
+            </a>
+          </div>
         </div>
         <button
           class="navbar-toggler"
@@ -50,7 +71,7 @@
               <a href="/prayas_team.html" class="nav-link">Prayas Team</a>
             </li>
             <li class="nav-item">
-              <a href="/#news" class="nav-link">News</a>
+              <a href="/#news1" class="nav-link">News</a>
             </li>
             <li class="nav-item">
               <a href="/loginPage.html" class="nav-link">Login</a>
@@ -63,7 +84,9 @@
     <section class="bg-light text-primary p-5 text-center text-sm-start">
       <div class="container">
         <div>
-          <h2 class="text-left">Membership</h2>
+          <div class="content">
+            <h2 class="text_shadows">Membership</h2>
+          </div>
           <p class="text-dark" style="font-size: 20px">
             Any person who is of sound mind, has faith and commitment to the
             objectives of the association and is desirous of the betterment of
@@ -99,6 +122,90 @@
         </div>
       </div>
     </section>
+
+    <footer class="bg-dark text-center text-white">
+      <div class="container">
+        <!-- Contact us -->
+        <section class="mb-4" id="contact">
+          <p class="h3 pb-2 border-bottom border-light">Contact us</p>
+          <p>5/172 A, New Partap Nagar, GT Road,</p>
+          <p>Amritsar, Punjab - 143006</p>
+          <a
+            class="btn btn-outline-light btn-floating m-1"
+            href="https://www.facebook.com/profile.php?id=100073539512979"
+            role="button"
+            target="_blank"
+            data-toggle="tooltip"
+            title="Prayas Punjab"
+          ><i class="fa fa-facebook"></i
+          ></a>
+          <a
+            class="btn btn-outline-light btn-floating m-1"
+            href="https://www.youtube.com/channel/UCmA3kHQX3b5JUBUaGUchQCQ"
+            role="button"
+            target="_blank"
+            data-toggle="tooltip"
+            title="PRAYAS"
+          ><i class="fa fa-youtube"></i
+          ></a>
+          <a
+            class="btn btn-outline-light btn-floating m-1"
+            href="https://twitter.com/PrayasPunjab"
+            role="button"
+            target="_blank"
+            data-toggle="tooltip"
+            title="@PrayasPunjab"
+          ><i class="fa fa-twitter"></i
+          ></a>
+
+          <a
+            class="btn btn-outline-light btn-floating m-1"
+            href="#"
+            role="button"
+            target="_blank"
+          ><i class="fa fa-google"></i
+          ></a>
+
+          <a
+            class="btn btn-outline-light btn-floating m-1"
+            href="https://www.instagram.com/prayas_punjab/"
+            role="button"
+            target="_blank"
+            data-toggle="tooltip"
+            title="@prayas_punjab"
+          ><i class="fa fa-instagram"></i
+          ></a>
+
+          <a
+            class="btn btn-outline-light btn-floating m-1"
+            href="https://www.linkedin.com/in/prayas-punjab-9a05b8222/"
+            role="button"
+            target="_blank"
+            data-toggle="tooltip"
+            title="PRAYAS PUNJAB"
+          ><i class="fa fa-linkedin"></i
+          ></a>
+        </section>
+
+        <!-- Copyright -->
+        <section>
+          <a href='/collaborators.html' class='aTag'>Collaborators</a>
+          <a href='/collaborators.html' class='aTag'>Dev Team</a>
+          <div class="container">
+            <div
+              class="text-center p-1"
+              style="background-color: rgba(0, 0, 0, 0.2)"
+            >
+              <p>© 2021 Copyright:</p>
+              <p>Prayas</p>
+              <p>
+                Punjab Regional Association of Youth for Advancement of Sciences
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </footer>
 
     <script src="script.js"></script>
     <script

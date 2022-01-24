@@ -40,7 +40,7 @@ exports.getEvent = catchAsync(async (req, res, next) => {
   let x = completed.galleryImages.map((el) =>
     replacePlaceHolder(galleryImage, el)
   );
-  out = out.replace('{%GALLERY_IMAGE%}', x);
+  out = out.replace('{%GALLERY_IMAGE%}', x).split(',').join(' ');
 
   res.writeHead(200, { 'Content-type': 'text/html' });
   res.end(out);

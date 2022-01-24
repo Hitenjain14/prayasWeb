@@ -23,7 +23,13 @@ const replacePlaceHolder2 = (temp, event) => {
   } else {
     output = output.replace(/{%LINK%}/g, '#');
   }
-
+  console.log(event.createdAt);
+  const x = new Date(event.createdAt);
+  if (Date.now() - 5 * 24 * 60 * 60 * 1000 >= x) {
+    output = output.replace(/{%NEW%}/g, '');
+  } else {
+    output = output.replace(/{%NEW%}/g, 'New!');
+  }
   return output;
 };
 const page = fs.readFileSync('./public/admin.html', 'utf8');
@@ -41,7 +47,10 @@ const newsPage = fs.readFileSync('./public/templates/news.html', 'utf-8');
 
 exports.getAllEvents = catchAsync(async (req, res, next) => {
   const completed = await completedEvent.find();
-  const upcoming = await upcomingEvents.find().sort({ createdAt: -1 });
+  const upcoming = await upcomingEvents
+    .find()
+    .sort({ createdAt: -1 })
+    .limit(15);
   const out1 = completed.map((el) => replacePlaceHolder1(images, el));
   const out2 = upcoming.map((el) => replacePlaceHolder2(newsPage, el));
   let out_ = homePage.replace('{%SLIDER_IMAGES%}', out1).split(',').join(' ');
